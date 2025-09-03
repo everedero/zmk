@@ -232,6 +232,7 @@ static int kscan_matrix_read(const struct device *dev) {
 #if CONFIG_ZMK_KSCAN_MATRIX_WAIT_BEFORE_INPUTS > 0
         k_busy_wait(CONFIG_ZMK_KSCAN_MATRIX_WAIT_BEFORE_INPUTS);
 #endif
+        //k_usleep(90); // Increase to 110 us peak
         struct kscan_gpio_port_state state = {0};
 
         for (int j = 0; j < data->inputs.len; j++) {
