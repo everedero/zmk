@@ -23,6 +23,14 @@ In includes the following peripherals:
   :align: center
   :alt: ApexProMini
 
+Note: this driver was developped using the French AZERTY keyboard version,
+on which ENTER is 2U high.
+QWERTY versions have 61 keys and not 62, with:
+
+- An additional K29 BACKSLASH key above ENTER
+- K45 SUP removed to fit a wider left shift
+- K42 STAR removed to fit the ENTER key
+
 Hardware
 ********
 
@@ -44,7 +52,7 @@ Keyboard Mapping:
 -----------------
 
 This array corresponds to the electrical connections, not to the geometric positions.
-Notice how K15 is addressed by column 12, row 5.
+Notice how K15 (BACKSPACE) is addressed by column 12, row 5.
 
 +----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 |    | C1  | C2  | C3  | C4  | C5  | C6  | C7  | C8  | C9  | C10 | C11 | C12 | C13 | C14 |
