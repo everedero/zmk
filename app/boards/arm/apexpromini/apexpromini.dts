@@ -23,6 +23,7 @@
         zephyr,flash = &flash0;
         zmk,kscan = &kscan0;
         zmk,physical-layout = &physical_layout0;
+/*        zmk,underglow = &led_strip;*/
     };
 
         kscan0: kscan {
@@ -136,7 +137,20 @@ RC(4,0) RC(4,1) RC(4,2)  RC(4,4)   RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)
     pinctrl-names = "default";
     cs-gpios = <&gpiob 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
     status = "okay";
-        /* TODO issi,is31fl3743b driver */
+
+    /* TODO issi,is31fl3743b driver */
+    /* led_strip: is31fl3743b@0 {
+        compatible = "issi,is31fl3743b";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+
+        chain-length = <62>;
+        spi-one-frame = <0x70>;
+        spi-zero-frame = <0x40>;
+        color-mapping = <LED_COLOR_ID_GREEN
+                         LED_COLOR_ID_RED
+                         LED_COLOR_ID_BLUE>;
+    };*/
 };
 
 &timers2 {
