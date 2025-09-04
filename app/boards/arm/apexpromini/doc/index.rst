@@ -31,6 +31,21 @@ QWERTY versions have 61 keys and not 62, with:
 - K45 SUP removed to fit a wider left shift
 - K42 STAR removed to fit the ENTER key
 
+Installation
+************
+
+In order to be able to flash the new firmware, the factory firmware has
+to be completely erased in order to remove the STM32L4 flash protection.
+In order to do this process:
+
+- Open STM32CubeProgrammer and connect the target
+- In OB section, check "PCROP_RDB"
+- In PCROP Protection, write PCROP_START value as 0xFFFF and PCROP_END as 0x0 (end before start disables the protection)
+- In Write Protection, write WRP1A_STRT and WRP1B_STRT values as 0x3F and WRP1A_END and WRP1B_END as 0x0 (same, end before start disables the protection)
+- Then, go to Read Out Protection and select "AA" instead of "BB"
+
+Be mindful that the PCROP protection is only disabled when the ROP value is decreased, from BB to AA, so if the process fails, you will have to set the ROP bit as "BB" again and make sure PCROP_RDP is properly checked.
+
 Hardware
 ********
 
