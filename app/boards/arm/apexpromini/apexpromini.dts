@@ -17,8 +17,8 @@
     compatible = "steelseries,apexpromini", "st,stm32l412";
 
     chosen {
-        zephyr,console = &usart1;
-        zephyr,shell-uart = &usart1;
+        zephyr,console = &usbuart;
+        zephyr,shell-uart = &usbuart;
         zephyr,sram = &sram0;
         zephyr,flash = &flash0;
         zmk,kscan = &kscan0;
@@ -87,6 +87,10 @@ RC(4,0) RC(4,1) RC(4,2)  RC(4,4)   RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)
 };
 
 &clk_hsi {
+    status = "okay";
+};
+
+&clk_hsi48 {
     status = "okay";
 };
 
@@ -189,10 +193,16 @@ RC(4,0) RC(4,1) RC(4,2)  RC(4,4)   RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)
     };
 };
 
-&usb {
+&usb_fs_phy {
     status = "okay";
+};
 
-    cdc_acm_uart0 {
+zephyr_udc0: &usb {
+    status = "okay";
+    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12 &usb_noe_pa13>;
+    pinctrl-names = "default";
+
+    usbuart: cdc_acm_uart0 {
         compatible = "zephyr,cdc-acm-uart";
     };
 };
