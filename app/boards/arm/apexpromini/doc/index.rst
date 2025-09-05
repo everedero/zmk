@@ -57,7 +57,7 @@ Peripheral Mapping:
 
 - Flash driver on SPI1: PB3/PB4/PA5/PA15
 - LED controller on SPI2: PB12/PB13/PA14/PA15
-- Key columns C1-C14: PA0/PA1/PA2/PA3/PA4/PA5/PA6/PA7/PC4/PC5/PC0/PC3/PC1/PC2
+- Key columns C1-C14: PA0/PA1/PA2/PA3/PA4/PA5/PA6/PA7/PC4/PC5/PC0/PC1/PC2/PC3
 - Key rows R1-R5: PA11/PB10/PB2/PB1/PB0
 - SWD debug port: PA13/PA14
 - USB port: PA11/PA12
