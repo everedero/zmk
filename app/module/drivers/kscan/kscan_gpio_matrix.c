@@ -247,6 +247,7 @@ static int kscan_matrix_read(const struct device *dev) {
             zmk_debounce_update(&data->matrix_state[index], active, config->debounce_scan_period_ms,
                                 &config->debounce_config);
         }
+        k_usleep(90); // Increase to 110 us peak
 
         err = gpio_pin_set_dt(&out_gpio->spec, 0);
         if (err) {
