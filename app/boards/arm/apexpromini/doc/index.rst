@@ -83,6 +83,10 @@ Notice how K15 (BACKSPACE) is addressed by column 12, row 5.
 | R5 | K58 | K59 | K60 |     | K62 |     |     | K65 | K66 | K67 | K68 | K15 |     |     |
 +----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+-----+
 
+Note that the original driver has a polling period of 3ms and a 110us-long pulse per key.
+The ZMK standard 20us pulse gets filtered out by the hardware, it is necessary to increase
+this value.
+
 LED Driver Mapping:
 -------------------
 
