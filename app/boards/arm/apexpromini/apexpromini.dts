@@ -117,7 +117,7 @@ RC(5,0) RC(5,1) RC(5,2)  RC(5,4)   RC(5,7) RC(5,8) RC(5,9) RC(5,10)
     pinctrl-0 = <&usart1_tx_pb6 &usart1_rx_pb7>;
     pinctrl-names = "default";
     current-speed = <115200>;
-    status = "disabled";
+    status = "okay";
 };
 
 &spi1 {
@@ -201,7 +201,7 @@ RC(5,0) RC(5,1) RC(5,2)  RC(5,4)   RC(5,7) RC(5,8) RC(5,9) RC(5,10)
 
 zephyr_udc0: &usb {
     status = "okay";
-    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12>; /* &usb_noe_pa13>;*/
+    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12 &usb_noe_pa13>;
     pinctrl-names = "default";
 
     usbuart: cdc_acm_uart0 {
