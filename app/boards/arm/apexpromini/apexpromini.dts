@@ -29,14 +29,16 @@
         kscan0: kscan {
             compatible = "zmk,kscan-gpio-matrix";
                     diode-direction = "row2col";
-            poll-period-ms = <3>;
+            #poll-period-ms = <3>;
+            poll-period-ms = <5>;
              row-gpios
-                 = <&gpiob 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                 = <&gpioc 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+                 , <&gpiob 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                  , <&gpiob 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                  , <&gpiob 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                  , <&gpiob 1  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
                  , <&gpiob 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                 ;
+                 ; // Needs C10 as padding
              col-gpios
                  = <&gpioa 0  GPIO_ACTIVE_HIGH>
                  , <&gpioa 1  GPIO_ACTIVE_HIGH>
@@ -116,7 +118,7 @@ RC(4,0) RC(4,1) RC(4,2)  RC(4,4)   RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)
     pinctrl-0 = <&usart1_tx_pb6 &usart1_rx_pb7>;
     pinctrl-names = "default";
     current-speed = <115200>;
-    status = "okay";
+    status = "disabled";
 };
 
 &spi1 {
@@ -200,7 +202,7 @@ RC(4,0) RC(4,1) RC(4,2)  RC(4,4)   RC(4,7) RC(4,8) RC(4,9) RC(4,10) RC(4,11)
 
 zephyr_udc0: &usb {
     status = "okay";
-    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12 &usb_noe_pa13>;
+    pinctrl-0 = <&usb_dm_pa11 &usb_dp_pa12>; /* &usb_noe_pa13>;*/
     pinctrl-names = "default";
 
     usbuart: cdc_acm_uart0 {

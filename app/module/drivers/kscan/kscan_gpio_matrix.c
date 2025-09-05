@@ -232,6 +232,8 @@ static int kscan_matrix_read(const struct device *dev) {
 #if CONFIG_ZMK_KSCAN_MATRIX_WAIT_BEFORE_INPUTS > 0
         k_busy_wait(CONFIG_ZMK_KSCAN_MATRIX_WAIT_BEFORE_INPUTS);
 #endif
+        k_usleep(90); // Increase to 110 us peak
+        //k_busy_wait(K_MSEC(1));
         struct kscan_gpio_port_state state = {0};
 
         for (int j = 0; j < data->inputs.len; j++) {
@@ -247,7 +249,6 @@ static int kscan_matrix_read(const struct device *dev) {
             zmk_debounce_update(&data->matrix_state[index], active, config->debounce_scan_period_ms,
                                 &config->debounce_config);
         }
-        k_usleep(90); // Increase to 110 us peak
 
         err = gpio_pin_set_dt(&out_gpio->spec, 0);
         if (err) {
